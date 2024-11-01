@@ -11,6 +11,7 @@ public class Main {
 		System.out.println(f6(20,11)); 
 		System.out.println(f7(30,5)); 
 		System.out.println(f8(422));
+		System.out.println(f9(422));
 		
 	}
 
@@ -76,7 +77,7 @@ public class Main {
 	   return f8(x,divisor+1);
    }
    
-   public static boolean f8(int n) {
+   public static boolean f9(int n) {
 	   if (n < 10) 
            return true;
 	   if (n==0)
@@ -84,7 +85,7 @@ public class Main {
 	   if ((n%2)!=(n/10)%2)
 		   return false;
 	   
-	   return f8(n/10);
+	   return f9(n/10);
    }
 }
    
