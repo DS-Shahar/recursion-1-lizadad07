@@ -1,91 +1,65 @@
-package prod;
+package prodArr;
 
 public class Main {
 	public static void main(String[] args) {
-		int n=10;
-		System.out.println(f1(n));
-		System.out.println(f2(n));
-		System.out.println(f3(n));
-		System.out.println(f4(n));
-		System.out.println(f5(30,11)); // בהנחה שאיי הוא הגדול
-		System.out.println(f6(20,11)); 
-		System.out.println(f7(30,5)); 
-		System.out.println(f8(422));
-		System.out.println(f9(422));
+		int[] arr = new int[]{12,4,14,4};
+		int i = arr.length-1;
+		System.out.println(f14(arr, i));
+		System.out.println(f15(arr, i));
+		System.out.println(f16(arr, i, 2));
+		System.out.println(f17(arr, i));
+		System.out.println(f18(arr, i));// if there is not prime num in the arr, return true.
+	
 		
 	}
 
    
-   public static int f1(int n) {
-	   if (n==0)
+   public static int f14( int arr[], int i) {
+	   if (i==-1)
 		   return 0;
-	   return n+f1(n-1);
+	   return f14(arr, i-1)+arr[i];
    }
    
-   public static int f2(int n) {
-	   if (n==0)
-		   return 1;
-	   return n*f2(n-1);
-   }
-   
-   public static int f3(int n) { 
-	   if (n==0)
-		   return 1;
-	   if (n%2==1)
-		   return n*f3(n-1);
-	   return f3(n-1);
-   }
-   
-   public static int f4(int n) {
-	   if (n==0)
+   public static int f15( int arr[], int i) {
+	   if (i==-1)
 		   return 0;
-	   
-	   return 1 + f4(n/10);
+	   if (arr[i]>0)
+		   return f15(arr, i-1)+1;
+	   return f15(arr, i-1);
    }
    
-   
-   public static int f5(int a,int b) { 
-	   if (a<b)
-		   return 0;
-	   
-	   return 1 + f5(a-b,b);
+   public static int f16( int arr[], int i, int n) {
+	   if (i==-1)
+		   return -1;
+	   if (arr[i]==n)
+		   return i;
+	   return f16(arr, i-1, n);
    }
    
-   public static int f6(int a,int b) { 
-	   if (a<b)
-		   return a;
-	   
-	   return f6(a-b,b);
-   }
-   
-   public static boolean f7(int x,int y) { 
-	   if (x==0)
+   public static boolean f17( int arr[], int i) {
+	   if (i==0)
 		   return true;
-	   if (x<0)
+	   if (arr[i]<arr[i-1])
 		   return false;
-	   
-	   return f7(x-y,y);
+	   return f17(arr, i-1);
    }
    
-   public static boolean f8(int x, int divisor) { 
-	   if (divisor==x)
+   public static boolean f18( int arr[], int i) {
+	   if (i==0)
 		   return true;
-	   if (f7(x,divisor)) //if (number % divisor == 0)
+	   if (isPrime(arr[i],2)==true)
+		   return false;
+	   return f18(arr, i-1);
+   }
+   
+   public static boolean isPrime(int n, int divisor) {
+	   if (divisor==n)
+		   return true;
+	   if (n % divisor == 0) 
 		   return false;
 	   
 		   
-	   return f8(x,divisor+1);
+	   return isPrime(n,divisor+1);
    }
-   
-   public static boolean f9(int n) {
-	   if (n < 10) 
-           return true;
-	   if (n==0)
-		   return true;
-	   if ((n%2)!=(n/10)%2)
-		   return false;
-	   
-	   return f9(n/10);
-   }
+
 }
-   
